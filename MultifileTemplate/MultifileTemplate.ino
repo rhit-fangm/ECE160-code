@@ -63,7 +63,7 @@ Ultrasonic redmySonar(triggerPin1);
 long distance;
 long distance1; // data type long is larger than an integer (int)
 //photoresistor pins
-const int pResistor = A9;  //NEEDS an ANALOG Input Pin  // dummy pin, will be more LEDs later
+const int pResistor = A15;  //NEEDS an ANALOG Input Pin  // dummy pin, will be more LEDs later
 int pRvalue;
 
 // Create an instance of the playstation controller object
@@ -101,8 +101,8 @@ void setup() {
   //run setup code
   setupRSLK();
   //sonar setup
-  pinMode(triggerPin, OUTPUT);
-  pinMode(triggerPin1, OUTPUT);
+  pinMode(triggerPin, INPUT);
+  pinMode(triggerPin1, INPUT);
 
   // set pushbutton on breadboard to use internal pullup resistor
   pinMode(START_BUTTON, INPUT_PULLUP);
