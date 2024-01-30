@@ -30,6 +30,7 @@
 #include <Servo.h>
 #include "PS2X_lib.h"
 #include <TinyIRremote.h>
+#include <Ultrasonic.h>
 
 // Define pin numbers for the button on the PlayStation controller
 #define PS2_DAT 14  //P1.7 <-> brown wire
@@ -43,7 +44,7 @@
 #define STR_HELPER(x) #x
 #define STR(x) STR_HELPER(x)
 #define IR_RCV_PIN 33
-#define IR_TRX_PIN 36  //pin 36 in end
+#define IR_TRX_PIN 37  //pin 37 in end
 //initialize IR pins
 IRsender sendIR(IR_TRX_PIN);
 IRreceiver irRX(IR_RCV_PIN);
@@ -51,7 +52,14 @@ IRData IRresults;
 IRData IRmsg;
 uint16_t IRcommand;
 int IRaddress;
+//ultrasonic sensor
+const int triggerPin = 9;
+const int triggerPin1 = 10;
 
+Ultrasonic bluemySonar(triggerPin);
+Ultrasonic redmySonar(triggerPin1);
+
+long distance; // data type long is larger than an integer (int)
 //photoresistor pins
 const int pResistor = A9;  //NEEDS an ANALOG Input Pin  // dummy pin, will be more LEDs later
 int pRvalue = analogRead(pResistor);
@@ -90,6 +98,9 @@ void setup() {
 
   //run setup code
   setupRSLK();
+  //sonar setup
+  pinMode(triggerPin, OUTPUT);
+  pinMode(triggerPin1, OUTPUT);
 
   // set pushbutton on breadboard to use internal pullup resistor
   pinMode(START_BUTTON, INPUT_PULLUP);

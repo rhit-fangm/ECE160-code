@@ -1,6 +1,5 @@
 void lineFollowing() {
   uint32_t linePos = getLinePosition();
-  distIN = readSharpDistIN(SensorPos);
   int lineDirection = 0;
   if ((linePos > 3600) && (linePos < 4475)) {
     enableMotor(LEFT_MOTOR);
@@ -47,12 +46,7 @@ void lineFollowing() {
       setMotorSpeed(RIGHT_MOTOR, 16);
     }
   }
-  if ((distIN < stopDistance) && (linePosition > 1000) && (linePosition < 7000)) {
-    setMotorSpeed(BOTH_MOTORS, 0);
-    openClaw();
-    delay(1000);
-    state = MANUAL;
-  }
+
 
   //Go straight
   else {  // go straight
