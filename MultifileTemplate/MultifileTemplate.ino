@@ -19,21 +19,24 @@
 */
 
 // this is to see if github works
-// test 2 
+// test 2
 //test from rose laptop
 // test 3
+// changes
+// test on Srishti's computer
 
 // Load libraries used
 #include "SimpleRSLK.h"
 #include <Servo.h>
 #include "PS2X_lib.h"
 #include <TinyIRremote.h>
+#include <Ultrasonic.h>
 
 // Define pin numbers for the button on the PlayStation controller
 #define PS2_DAT 14  //P1.7 <-> brown wire
 #define PS2_CMD 15  //P1.6 <-> orange wire
 #define PS2_SEL 34  //P2.3 <-> yellow wire (also called attention)
-#define PS2_CLK 35  //P6.7 <-> blue wire 
+#define PS2_CLK 35  //P6.7 <-> blue wire
 
 #define START_BUTTON 18  //P3.0 a push button on top of the breadboard
 
@@ -41,7 +44,7 @@
 #define STR_HELPER(x) #x
 #define STR(x) STR_HELPER(x)
 #define IR_RCV_PIN 33
-#define IR_TRX_PIN 36  //pin 36 in end
+#define IR_TRX_PIN 37  //pin 37 in end
 //initialize IR pins
 IRsender sendIR(IR_TRX_PIN);
 IRreceiver irRX(IR_RCV_PIN);
@@ -50,13 +53,19 @@ IRData IRmsg;
 uint16_t IRcommand;
 int IRaddress;
 
+//ultrasonic sensor pin definitions
+const int triggerPin = 9;
+const int triggerPin1 = 10;
+
+Ultrasonic bluemySonar(triggerPin);
+Ultrasonic redmySonar(triggerPin1);
+
+long distance;
+long distance1; // data type long is larger than an integer (int)
 //photoresistor pins
-const int pResistor = A9;       //NEEDS an ANALOG Input Pin  // dummy pin, will be more LEDs later
-int pRvalue = analogRead(pResistor);
-//IR sensor
-uint16_t distMM;
-uint16_t distIN;
-uint8_t SensorPos = 1; 
+const int pResistor = A15;  //NEEDS an ANALOG Input Pin  // dummy pin, will be more LEDs later
+int pRvalue;
+
 // Create an instance of the playstation controller object
 PS2X ps2x;
 
@@ -91,6 +100,9 @@ void setup() {
 
   //run setup code
   setupRSLK();
+  //sonar setup
+  pinMode(triggerPin, INPUT);
+  pinMode(triggerPin1, INPUT);
 
   // set pushbutton on breadboard to use internal pullup resistor
   pinMode(START_BUTTON, INPUT_PULLUP);
@@ -148,9 +160,13 @@ void setup() {
 void loop() {
   // Read input from PlayStation controller
   ps2x.read_gamepad();
+
+  //distances
+  distance = bluemySonar.read(CM); // use the Ultrasonic function read to get distance
+  distance1 = redmySonar.read(CM);
   // Perform actions based on the current state
   executeStateActions();
-  distMM = readSharpDistMM(SensorPos);
+
   if (ps2x.Button(PSB_L1)) {
     votive();
   }
@@ -167,10 +183,10 @@ void executeStateActions() {
         floorCalibration();
         isCalibrationComplete = true;
       }
-      if (ps2x.ButtonPressed(PSB_SELECT)){
+      if (ps2x.ButtonPressed(PSB_SELECT)) {
         RobotCurrentState = AUTONOMOUS;
       }
-      if (ps2x.ButtonPressed(PSB_START)){
+      if (ps2x.ButtonPressed(PSB_START)) {
         RobotCurrentState = MANUAL;
       }
 
@@ -179,7 +195,7 @@ void executeStateActions() {
       // Perform actions for the manual state
       Serial.println("Manual Mode");
       RemoteControlPlaystation();
-      if (ps2x.ButtonPressed(PSB_SELECT)){
+      if (ps2x.ButtonPressed(PSB_SELECT)) {
         RobotCurrentState = AUTONOMOUS;
       }
       // Add any additional actions for the manual state
@@ -188,10 +204,9 @@ void executeStateActions() {
     case AUTONOMOUS:
       // Perform actions for the autonomous state
       Serial.println("Autonomous Mode");
-      AutonomousControl(); //* needs to work on
-      if (ps2x.ButtonPressed(PSB_START)){
+      AutonomousControl();  //* needs to work on
+      if (ps2x.ButtonPressed(PSB_START)) {
         RobotCurrentState = MANUAL;
-
       }
       // Add any additional actions for the autonomous state
       break;

@@ -1,6 +1,5 @@
 void lineFollowing() {
   uint32_t linePos = getLinePosition();
-  distIN = readSharpDistIN(SensorPos);
   int lineDirection = 0;
   if ((linePos > 3600) && (linePos < 4475)) {
     enableMotor(LEFT_MOTOR);
@@ -11,8 +10,7 @@ void lineFollowing() {
     setMotorSpeed(RIGHT_MOTOR, 12);
     Serial.println(linePos);
     //Adjust Right
-  }
-  else if ((linePos > 4525) && (linePos < 5400)) {
+  } else if ((linePos > 4525) && (linePos < 5400)) {
     enableMotor(LEFT_MOTOR);
     enableMotor(RIGHT_MOTOR);
     setMotorDirection(LEFT_MOTOR, MOTOR_DIR_FORWARD);
@@ -22,8 +20,7 @@ void lineFollowing() {
     Serial.println(linePos);
 
     //Turn Right
-  }
-  else if (linePos < 3600) {  //turn LEFT
+  } else if (linePos < 3600) {  //turn LEFT
     if (positionBool == false) {
       setMotorSpeed(LEFT_MOTOR, 0);
       setMotorSpeed(RIGHT_MOTOR, 0);
@@ -49,12 +46,7 @@ void lineFollowing() {
       setMotorSpeed(RIGHT_MOTOR, 16);
     }
   }
-    if ((distIN < stopDistance) && (linePosition > 1000) && (linePosition < 7000)) {
-    setMotorSpeed(BOTH_MOTORS, 0);
-    openClaw();
-    delay(1000);
-    state = MANUAL;
-  }
+
 
   //Go straight
   else {  // go straight
