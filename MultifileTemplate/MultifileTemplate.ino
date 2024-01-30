@@ -59,10 +59,11 @@ const int triggerPin1 = 10;
 Ultrasonic bluemySonar(triggerPin);
 Ultrasonic redmySonar(triggerPin1);
 
-long distance; // data type long is larger than an integer (int)
+long distance;
+long distance1; // data type long is larger than an integer (int)
 //photoresistor pins
 const int pResistor = A9;  //NEEDS an ANALOG Input Pin  // dummy pin, will be more LEDs later
-int pRvalue = analogRead(pResistor);
+int pRvalue;
 
 // Create an instance of the playstation controller object
 PS2X ps2x;
@@ -158,6 +159,10 @@ void setup() {
 void loop() {
   // Read input from PlayStation controller
   ps2x.read_gamepad();
+
+  //distances
+  distance = bluemySonar.read(CM); // use the Ultrasonic function read to get distance
+  distance1 = redmySonar.read(CM);
   // Perform actions based on the current state
   executeStateActions();
 
