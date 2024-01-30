@@ -2,10 +2,7 @@
 ---- 
 # Important Deadlines
 Milestone 3:
-- 
-
-Milestone 4:
-- 
+-  
 
 Final Touches:
 - 
