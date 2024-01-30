@@ -45,5 +45,5 @@ void RemoteControlPlaystation() {
   } else if (ps2x.Button(PSB_L2)) {
     Serial.println("Claw closing...");
     clawRelease();
-  } 
+  }
 }
