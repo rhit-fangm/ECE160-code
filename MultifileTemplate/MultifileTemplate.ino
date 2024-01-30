@@ -18,12 +18,6 @@
      blue wire          P6.7
 */
 
-// this is to see if github works
-// test 2
-//test from rose laptop
-// test 3
-// changes
-// test on Srishti's computer
 
 // Load libraries used
 #include "SimpleRSLK.h"
@@ -157,6 +151,8 @@ void setup() {
     delayMicroseconds(1000 * 1000);
   }
 }
+
+
 void loop() {
   // Read input from PlayStation controller
   ps2x.read_gamepad();
@@ -174,6 +170,8 @@ void loop() {
     catrina();
   }
 }
+
+
 void executeStateActions() {
   switch (RobotCurrentState) {
     case INITIALIZATION:
@@ -204,7 +202,7 @@ void executeStateActions() {
     case AUTONOMOUS:
       // Perform actions for the autonomous state
       Serial.println("Autonomous Mode");
-      AutonomousControl();  //* needs to work on
+      AutonomousControl();  
       if (ps2x.ButtonPressed(PSB_START)) {
         RobotCurrentState = MANUAL;
       }
