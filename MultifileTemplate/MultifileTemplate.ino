@@ -52,7 +52,8 @@ IRData IRresults;
 IRData IRmsg;
 uint16_t IRcommand;
 int IRaddress;
-//ultrasonic sensor
+
+//ultrasonic sensor pin definitions
 const int triggerPin = 9;
 const int triggerPin1 = 10;
 
