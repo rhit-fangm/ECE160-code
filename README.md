@@ -12,10 +12,10 @@ Final Touches:
 
 
 ----
-## Plan for competition
+# Plan for competition
 
 ----
-## Individual Tasks
+# Individual Tasks
 ### Mandolyn
 - [ ] .
 
