@@ -1,6 +1,6 @@
 # ECE160 Final Project
 ---- 
-## Important Deadlines
+# Important Deadlines
 Milestone 3:
 - 
 
