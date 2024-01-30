@@ -77,8 +77,8 @@ void stop() {
 /* Claw Functions */
 void clawGrab() {
   for (pos = 40; pos < 140; pos += 3)  // goes from 0 degrees to 180 degrees in 3 degree steps
-  {                                    
-    myservo.write(pos);                // tell servo to go to position in variable 'pos'
+  {
+    myservo.write(pos);  // tell servo to go to position in variable 'pos'
   }
 }
 void clawRelease() {
