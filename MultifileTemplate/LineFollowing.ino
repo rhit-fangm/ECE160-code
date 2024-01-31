@@ -1,7 +1,10 @@
 void lineFollowing() {
   uint32_t linePos = getLinePosition();
   int lineDirection = 0;
-  if ((linePos > 3600) && (linePos < 4475)) {
+  if (linePos < 900){
+    forward();
+  }
+  else if ((linePos > 3600) && (linePos < 4475)) {
     enableMotor(LEFT_MOTOR);
     enableMotor(RIGHT_MOTOR);
     setMotorDirection(LEFT_MOTOR, MOTOR_DIR_FORWARD);
