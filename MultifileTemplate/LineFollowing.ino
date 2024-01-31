@@ -47,9 +47,11 @@ void lineFollowing() {
     }
   }
 
-
   //Go straight
   else {  // go straight
+    enableMotor(BOTH_MOTORS);
+    setMotorDirection(LEFT_MOTOR, MOTOR_DIR_FORWARD);
+    setMotorDirection(RIGHT_MOTOR, MOTOR_DIR_FORWARD);
     setMotorSpeed(LEFT_MOTOR, 12);
     setMotorSpeed(RIGHT_MOTOR, 12);
     Serial.println(linePos);

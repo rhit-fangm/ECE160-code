@@ -157,18 +157,14 @@ void loop() {
   // Read input from PlayStation controller
   ps2x.read_gamepad();
 
-  //distances
-  distance = bluemySonar.read(CM); // use the Ultrasonic function read to get distance
-  distance1 = redmySonar.read(CM);
-  // Perform actions based on the current state
   executeStateActions();
 
-  if (ps2x.Button(PSB_L1)) {
-    votive();
-  }
-  if (ps2x.Button(PSB_R1)) {
-    catrina();
-  }
+  // if (ps2x.Button(PSB_L1)) {
+  //   votive();
+  // }
+  // if (ps2x.Button(PSB_R1)) {
+  //   catrina();
+  // }
 }
 
 
