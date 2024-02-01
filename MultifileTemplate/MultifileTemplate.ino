@@ -158,13 +158,6 @@ void loop() {
   ps2x.read_gamepad();
 
   executeStateActions();
-
-  // if (ps2x.Button(PSB_L1)) {
-  //   votive();
-  // }
-  // if (ps2x.Button(PSB_R1)) {
-  //   catrina();
-  // }
 }
 
 
