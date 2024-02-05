@@ -48,8 +48,8 @@ uint16_t IRcommand;
 int IRaddress;
 
 //ultrasonic sensor pin definitions
-const int triggerPin = 9;
-const int triggerPin1 = 10;
+const int triggerPin = 3;
+const int triggerPin1 = 4;
 
 Ultrasonic bluemySonar(triggerPin);
 Ultrasonic redmySonar(triggerPin1);

@@ -34,7 +34,7 @@ void tunnel_navigation(){
       enableMotor(BOTH_MOTORS);
       setMotorDirection(LEFT_MOTOR, MOTOR_DIR_FORWARD);
       setMotorDirection(RIGHT_MOTOR, MOTOR_DIR_BACKWARD);
-      setMotorSpeed(RIGHT_MOTOR, lowSpeed);
+      setMotorSpeed(RIGHT_MOTOR, fastSpeed);
       setMotorSpeed(LEFT_MOTOR, lowSpeed);
       distance = bluemySonar.read(CM); // use the Ultrasonic function read to get distance
       distance1 = redmySonar.read(CM);
