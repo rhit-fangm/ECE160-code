@@ -4,7 +4,7 @@ void AutonomousControl() {
   Serial.print(pRvalue);
   Serial.print(" ");
 
-  distance = bluemySonar.read(CM); // use the Ultrasonic function read to get distance
+  distance = bluemySonarL.read(CM); // use the Ultrasonic function read to get distance
   distance1 = redmySonar.read(CM);
   Serial.print(" Left value: ");
   Serial.print(distance1);
@@ -17,11 +17,11 @@ void AutonomousControl() {
     stop();
     RobotCurrentState = MANUAL;
   } else if (pRvalue > 1000){
-    distance = bluemySonar.read(CM); // use the Ultrasonic function read to get distance
+    distance = bluemySonarL.read(CM); // use the Ultrasonic function read to get distance
     distance1 = redmySonar.read(CM);
     lineFollowing();
   } else {
-    distance = bluemySonar.read(CM); // use the Ultrasonic function read to get distance
+    distance = bluemySonarL.read(CM); // use the Ultrasonic function read to get distance
     distance1 = redmySonar.read(CM);
     tunnel_navigation();
   }
@@ -35,7 +35,7 @@ void tunnel_navigation(){
       setMotorDirection(RIGHT_MOTOR, MOTOR_DIR_BACKWARD);
       setMotorSpeed(RIGHT_MOTOR, lowSpeed);
       setMotorSpeed(LEFT_MOTOR, lowSpeed);
-      distance = bluemySonar.read(CM); // use the Ultrasonic function read to get distance
+      distance = bluemySonarL.read(CM); // use the Ultrasonic function read to get distance
       distance1 = redmySonar.read(CM);
     }
   }

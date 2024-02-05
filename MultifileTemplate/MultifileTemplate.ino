@@ -50,8 +50,10 @@ int IRaddress;
 //ultrasonic sensor pin definitions
 const int triggerPin = 9;
 const int triggerPin1 = 10;
+const int triggerPin2 = 26;
 
-Ultrasonic bluemySonar(triggerPin);
+Ultrasonic bluemySonarL(triggerPin);
+Ultrasonic bluemySonarR(triggerPin2);
 Ultrasonic redmySonar(triggerPin1);
 
 long distance;
