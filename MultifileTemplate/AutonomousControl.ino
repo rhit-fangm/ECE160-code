@@ -1,5 +1,5 @@
 void AutonomousControl() {
-  ///xxx
+
   pRvalue = analogRead(pResistor);
   Serial.print(" Light value: ");
   Serial.print(pRvalue);
@@ -34,15 +34,9 @@ void tunnel_navigation(){
       enableMotor(BOTH_MOTORS);
       setMotorDirection(LEFT_MOTOR, MOTOR_DIR_FORWARD);
       setMotorDirection(RIGHT_MOTOR, MOTOR_DIR_BACKWARD);
-<<<<<<< HEAD
-      setMotorSpeed(RIGHT_MOTOR, fastSpeed);
-      setMotorSpeed(LEFT_MOTOR, fastSpeed);
-      distance = bluemySonarL.read(CM); // use the Ultrasonic function read to get distance
-=======
       setMotorSpeed(RIGHT_MOTOR, lowSpeed);
       setMotorSpeed(LEFT_MOTOR, lowSpeed);
       distance = bluemySonar.read(CM); // use the Ultrasonic function read to get distance
->>>>>>> parent of 7c5311a (sonar and line following update!)
       distance1 = redmySonar.read(CM);
     }
   }
