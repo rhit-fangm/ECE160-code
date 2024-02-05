@@ -16,6 +16,7 @@
      orange wire        P1.6 
      yellow wire        P2.3
      blue wire          P6.7
+     xxx
 */
 
 
