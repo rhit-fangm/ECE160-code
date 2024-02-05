@@ -45,11 +45,5 @@ void RemoteControlPlaystation() {
   } else if (ps2x.Button(PSB_L2)) {
     Serial.println("Claw closing...");
     clawRelease();
-  } else if (ps2x.Button(PSB_R1)) {
-    Serial.println("Votive activate...");
-    votive();
-  } else if (ps2x.Button(PSB_L1)) {
-    Serial.println("Catrina activate...");
-    catrina();
   }
 }
