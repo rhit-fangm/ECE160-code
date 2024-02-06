@@ -74,6 +74,7 @@ void turnL() {
 void stop() {
   disableMotor(BOTH_MOTORS);
 }
+
 /* Claw Functions */
 void clawGrab() {
   for (pos = 40; pos < 140; pos += 3)  // goes from 0 degrees to 180 degrees in 3 degree steps

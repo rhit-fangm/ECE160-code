@@ -14,10 +14,11 @@ void AutonomousControl() {
   Serial.print(distance);
   Serial.print(" ");
 
-  if ((distance < 15) && (pRvalue > 1000)) {
+  if ((distance < 15) && (pRvalue > 1500)) {
     stop();
+    clawRelease();
     RobotCurrentState = MANUAL;
-  } else if (pRvalue > 1000){
+  } else if (pRvalue > 1500){
     distance = bluemySonar.read(CM); // use the Ultrasonic function read to get distance
     distance1 = redmySonar.read(CM);
     lineFollowing();
@@ -29,23 +30,23 @@ void AutonomousControl() {
 }
 
 void tunnel_navigation(){
-  if (distance < 20) {
-    while (distance1 > 15) {
+  if (distance < 15) {
+    while (distance1 > 10) {
       enableMotor(BOTH_MOTORS);
       setMotorDirection(LEFT_MOTOR, MOTOR_DIR_FORWARD);
       setMotorDirection(RIGHT_MOTOR, MOTOR_DIR_BACKWARD);
-      setMotorSpeed(RIGHT_MOTOR, fastSpeed);
+      setMotorSpeed(RIGHT_MOTOR, lowSpeed);
       setMotorSpeed(LEFT_MOTOR, lowSpeed);
       distance = bluemySonar.read(CM); // use the Ultrasonic function read to get distance
       distance1 = redmySonar.read(CM);
     }
   }
-  else if (distance > 15 && distance1 < 10){
+  else if (distance > 15 && distance1 < 15){
     enableMotor(BOTH_MOTORS);
     setMotorDirection(LEFT_MOTOR, MOTOR_DIR_FORWARD);
     setMotorDirection(RIGHT_MOTOR, MOTOR_DIR_FORWARD);
-    setMotorSpeed(RIGHT_MOTOR, lowSpeed);
-    setMotorSpeed(LEFT_MOTOR, 60);
+    setMotorSpeed(RIGHT_MOTOR, 10);
+    setMotorSpeed(LEFT_MOTOR, 20);
   } else {
     enableMotor(BOTH_MOTORS);
     setMotorDirection(LEFT_MOTOR, MOTOR_DIR_FORWARD);
