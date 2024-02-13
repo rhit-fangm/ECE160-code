@@ -33,43 +33,61 @@ void forward() {
   enableMotor(BOTH_MOTORS);
   setMotorDirection(LEFT_MOTOR, MOTOR_DIR_FORWARD);
   setMotorDirection(RIGHT_MOTOR, MOTOR_DIR_FORWARD);
-  setMotorSpeed(BOTH_MOTORS, fastSpeed);
+  setMotorSpeed(BOTH_MOTORS, 70);
+  delay(50);
+  disableMotor(BOTH_MOTORS);
 }
+
 /* Moves robot backward: both motors backward same speed */
 void backward() {
   enableMotor(BOTH_MOTORS);
   setMotorDirection(LEFT_MOTOR, MOTOR_DIR_BACKWARD);
   setMotorDirection(RIGHT_MOTOR, MOTOR_DIR_BACKWARD);
-  setMotorSpeed(BOTH_MOTORS, lowSpeed);
+  setMotorSpeed(BOTH_MOTORS, 30);
+  delay(30);
+  disableMotor(BOTH_MOTORS);
 }
+
 void spinInPlaceCCW() {
-  enableMotor(BOTH_MOTORS);
-  setMotorDirection(LEFT_MOTOR, MOTOR_DIR_BACKWARD);
-  setMotorDirection(RIGHT_MOTOR, MOTOR_DIR_FORWARD);
-  setMotorSpeed(RIGHT_MOTOR, lowSpeed);
-  setMotorSpeed(LEFT_MOTOR, fastSpeed);
-}
-void spinInPlaceCW() {
   enableMotor(BOTH_MOTORS);
   setMotorDirection(LEFT_MOTOR, MOTOR_DIR_FORWARD);
   setMotorDirection(RIGHT_MOTOR, MOTOR_DIR_BACKWARD);
+  setMotorSpeed(RIGHT_MOTOR, lowSpeed);
+  setMotorSpeed(LEFT_MOTOR, fastSpeed);
+  delay(30);
+  disableMotor(BOTH_MOTORS);
+}
+
+void spinInPlaceCW() {
+  enableMotor(BOTH_MOTORS);
+  setMotorDirection(LEFT_MOTOR, MOTOR_DIR_BACKWARD);
+  setMotorDirection(RIGHT_MOTOR, MOTOR_DIR_FORWARD);
   setMotorSpeed(RIGHT_MOTOR, fastSpeed);
   setMotorSpeed(LEFT_MOTOR, lowSpeed);
+  delay(30);
+  disableMotor(BOTH_MOTORS);
 }
+
 void turnR() {
   enableMotor(BOTH_MOTORS);
   setMotorDirection(LEFT_MOTOR, MOTOR_DIR_FORWARD);
   setMotorDirection(RIGHT_MOTOR, MOTOR_DIR_FORWARD);
-  setMotorSpeed(RIGHT_MOTOR, lowSpeed);
-  setMotorSpeed(LEFT_MOTOR, fastSpeed);
+  setMotorSpeed(RIGHT_MOTOR, 30);
+  setMotorSpeed(LEFT_MOTOR, 70);
+  delay(30);
+  disableMotor(BOTH_MOTORS);
 }
+
 void turnL() {
   enableMotor(BOTH_MOTORS);
   setMotorDirection(LEFT_MOTOR, MOTOR_DIR_FORWARD);
   setMotorDirection(RIGHT_MOTOR, MOTOR_DIR_FORWARD);
-  setMotorSpeed(RIGHT_MOTOR, fastSpeed);
-  setMotorSpeed(LEFT_MOTOR, lowSpeed);
+  setMotorSpeed(RIGHT_MOTOR, 70);
+  setMotorSpeed(LEFT_MOTOR, 30);
+  delay(30);
+  disableMotor(BOTH_MOTORS);
 }
+
 /* Stops robot forward: both motors disabled */
 void stop() {
   disableMotor(BOTH_MOTORS);
